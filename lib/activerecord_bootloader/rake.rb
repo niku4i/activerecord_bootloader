@@ -1,4 +1,10 @@
 require 'active_record'
+
+# I'm not sure that requiring active_support here, 
+# but this prevents "undefined method `camelize' for "create_nodes":String"
+# when run rake db:migrate.
+require 'active_support/core_ext' 
+
 require 'fileutils'
 
 namespace :db do
