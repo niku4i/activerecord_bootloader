@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = ActiverecordBootloader::VERSION
   spec.authors       = ["Nobuhiro Nikushi"]
   spec.email         = ["nikushi.nobuhiro@dena.jp"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Bootloads your non-rails app ease.}
+  spec.summary       = %q{Taks care of the common tasks connection initializing and db:migrate.}
+
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -18,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "activerecord"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end
