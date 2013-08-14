@@ -4,8 +4,11 @@ require 'active_record'
 # but this prevents "undefined method `camelize' for "create_nodes":String"
 # when run rake db:migrate.
 require 'active_support/core_ext' 
-
 require 'fileutils'
+
+require_relative 'rake_helper'
+
+include ::ActiverecordBootloader::RakeHelper
 
 namespace :db do
   desc "migrate your database"
@@ -14,6 +17,12 @@ namespace :db do
       'db/migrate', 
       ENV["VERSION"] ? ENV["VERSION"].to_i : nil
     )
+  end
+
+  desc 'load seed data'
+  task :seed do
+    seed_file = File.join(root_path, 'db', 'seeds.rb')
+    load(seed_file) if File.exist?(seed_file)
   end
 
   desc "create an ActiveRecord migration in ./db/migrate"
